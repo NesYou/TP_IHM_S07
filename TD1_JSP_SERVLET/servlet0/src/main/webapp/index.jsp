@@ -5,8 +5,6 @@
     <title>Le titre</title>
 </head>
 <body>
-<p>EL activée ? ${3 + 4}</p>
-<a href="/hello">Lancer la servlet</a>
-<c:redirect url="/hello"></c:redirect>
+<c:redirect url="/controleur?action=home"></c:redirect>
 </body>
 </html>

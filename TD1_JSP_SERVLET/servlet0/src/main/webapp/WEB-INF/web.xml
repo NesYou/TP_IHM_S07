@@ -5,10 +5,10 @@
          version="2.5">
     <servlet>
         <servlet-name>MaServlet</servlet-name>
-        <servlet-class>servlet.MaServlet</servlet-class>
+        <servlet-class>controleur.Controleur</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MaServlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <url-pattern>/controleur</url-pattern>
     </servlet-mapping>
 </web-app>
