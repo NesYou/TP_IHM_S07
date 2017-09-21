@@ -1,0 +1,13 @@
+modele\Promotion.class
+modele\Groupe.class
+modele\algoCreationGroupes\AlgoClassique.class
+modele\Prof.class
+modele\Annee.class
+modele\Etudiant.class
+modele\FonctionnalitesStaticVersion.class
+modele\comportementAjout\ComportementAjout.class
+modele\comportementAjout\ComportementExtraTemporae.class
+modele\comportementAjout\ComportementClassique.class
+modele\Personne.class
+modele\algoCreationGroupes\AlgoCreationGroupe.class
+modele\IFonctionnalites.class
