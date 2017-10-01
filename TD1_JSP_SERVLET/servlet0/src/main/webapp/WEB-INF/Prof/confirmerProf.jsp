@@ -7,10 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Confirmation ajout prof</title>
-</head>
-<body>
-GG !!!
-</body>
+    <head>
+        <title>Confirmation ajout prof</title>
+    </head>
+    <body>
+        <p>
+            Prof crée.
+        </p>
+        <p>
+            <a href="/controleur?action=home">Retour</a>
+        </p>
+    </body>
 </html>

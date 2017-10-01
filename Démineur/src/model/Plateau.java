@@ -28,7 +28,7 @@ public class Plateau {
         this.armerPlateau();
 
         /*Attribution des valeurs*/
-        System.out.println("Attribution des valeurs aux cases adjacentes aux bombes");
+        System.out.println("Attribution des valeurs aux cases adjacentes aux bombes...");
         int valeurDeLaCase = 0;
         for(int i = 0; i < taille; i++) {
             for(int j = 0; j < taille; j++) {
@@ -38,7 +38,7 @@ public class Plateau {
                         if (this.getPlateau()[i - 1][j].isBombe()) {
                             valeurDeLaCase++;
                         }
-                    } catch (IndexOutOfBoundsException Ingnored) {
+                    } catch (IndexOutOfBoundsException ignored) {
 
                     }
                     //NORD-OUEST
@@ -46,7 +46,7 @@ public class Plateau {
                         if(this.getPlateau()[i-1][j-1].isBombe()) {
                             valeurDeLaCase++;
                         }
-                    } catch (IndexOutOfBoundsException Ignored) {
+                    } catch (IndexOutOfBoundsException ignored) {
 
                     }
                     //OUEST
@@ -54,7 +54,7 @@ public class Plateau {
                         if (this.getPlateau()[i][j - 1].isBombe()) {
                             valeurDeLaCase++;
                         }
-                    } catch (IndexOutOfBoundsException Ignored) {
+                    } catch (IndexOutOfBoundsException ignored) {
 
                     }
                     //SUD-OUEST
@@ -62,7 +62,7 @@ public class Plateau {
                         if (this.getPlateau()[i + 1][j - 1].isBombe()) {
                             valeurDeLaCase++;
                         }
-                    } catch (IndexOutOfBoundsException Ignored) {
+                    } catch (IndexOutOfBoundsException ignored) {
 
                     }
                     //SUD
@@ -70,7 +70,7 @@ public class Plateau {
                         if (this.getPlateau()[i + 1][j].isBombe()) {
                             valeurDeLaCase++;
                         }
-                    } catch (IndexOutOfBoundsException Ignored) {
+                    } catch (IndexOutOfBoundsException ignored) {
 
                     }
                     //SUD-EST
@@ -78,7 +78,7 @@ public class Plateau {
                         if (this.getPlateau()[i + 1][j + 1].isBombe()) {
                             valeurDeLaCase++;
                         }
-                    } catch (IndexOutOfBoundsException Ignored) {
+                    } catch (IndexOutOfBoundsException ignored) {
 
                     }
                     //EST
@@ -86,7 +86,7 @@ public class Plateau {
                         if (this.getPlateau()[i][j + 1].isBombe()) {
                             valeurDeLaCase++;
                         }
-                    } catch (IndexOutOfBoundsException Ignored) {
+                    } catch (IndexOutOfBoundsException ignored) {
 
                     }
                     //NORD-EST
@@ -94,7 +94,7 @@ public class Plateau {
                         if (this.getPlateau()[i - 1][j + 1].isBombe()) {
                             valeurDeLaCase++;
                         }
-                    } catch (IndexOutOfBoundsException Ignored) {
+                    } catch (IndexOutOfBoundsException ignored) {
 
                     }
                     this.getPlateau()[i][j].setValeur(valeurDeLaCase);
@@ -123,12 +123,16 @@ public class Plateau {
         String str = "";
         for(int i = 0; i < this.getTaille(); i++) {
             for(int j = 0; j < this.getTaille(); j++) {
-                if(this.getPlateau()[i][j].isBombe()) {
-                    str += "|B";
-                } else if(this.getPlateau()[i][j].getValeur() > 0){
-                    str += "|" + this.getPlateau()[i][j].getValeur();
+                if(this.getPlateau()[i][j].isRevelated()) {
+                    if (this.getPlateau()[i][j].isBombe()) {
+                        str += "B|";
+                    } else if (this.getPlateau()[i][j].getValeur() > 0) {
+                        str += this.getPlateau()[i][j].getValeur() + "|";
+                    } else {
+                        str += " |";
+                    }
                 } else {
-                    str += "| ";
+                    str += "X|";
                 }
             }
             str += "\n";
@@ -136,6 +140,9 @@ public class Plateau {
         return str;
     }
 
+    public boolean jouerPartie(int x, int y) {
+        return false;
+    }
 
     public int getTaille() {
         return taille;
