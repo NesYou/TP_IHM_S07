@@ -2,7 +2,7 @@ package model;
 
 import java.util.Random;
 
-public class Plateau {
+public class Plateau implements InterfacePlateau {
 
     private Case[][] plateau;
     private int taille;
@@ -17,6 +17,7 @@ public class Plateau {
     }
 
 
+    @Override
     public void initialiserPlateau() {
         for(int i = 0; i < taille; i++) {
             for(int j = 0; j < taille; j++) {
@@ -105,6 +106,7 @@ public class Plateau {
     }
 
 
+    @Override
     public void armerPlateau() {
         Random random = new Random();
         int minesPlacees = 0;
@@ -140,22 +142,28 @@ public class Plateau {
         return str.toString();
     }
 
+
+    @Override
     public boolean jouerPartie(int x, int y) {
         return false;
     }
 
+    @Override
     public int getTaille() {
         return taille;
     }
 
+    @Override
     public void setTaille(int taille) {
         this.taille = taille;
     }
 
+    @Override
     public Case[][] getPlateau() {
         return plateau;
     }
 
+    @Override
     public void setPlateau(Case[][] plateau) {
         this.plateau = plateau;
     }

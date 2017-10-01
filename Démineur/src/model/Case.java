@@ -4,7 +4,6 @@ public class Case {
 
     private boolean revelated;
     private boolean bombe;
-    private boolean isBombe;
     private int valeur;
 
     public boolean isRevelated() {
