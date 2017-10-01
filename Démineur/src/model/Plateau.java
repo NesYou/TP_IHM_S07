@@ -120,24 +120,24 @@ public class Plateau {
     }
 
     public String toString() {
-        String str = "";
+        StringBuilder str = new StringBuilder();
         for(int i = 0; i < this.getTaille(); i++) {
             for(int j = 0; j < this.getTaille(); j++) {
                 if(this.getPlateau()[i][j].isRevelated()) {
                     if (this.getPlateau()[i][j].isBombe()) {
-                        str += "B|";
+                        str.append("B|");
                     } else if (this.getPlateau()[i][j].getValeur() > 0) {
-                        str += this.getPlateau()[i][j].getValeur() + "|";
+                        str.append(this.getPlateau()[i][j].getValeur()).append("|");
                     } else {
-                        str += " |";
+                        str.append(" |");
                     }
                 } else {
-                    str += "X|";
+                    str.append("X|");
                 }
             }
-            str += "\n";
+            str.append("\n");
         }
-        return str;
+        return str.toString();
     }
 
     public boolean jouerPartie(int x, int y) {
