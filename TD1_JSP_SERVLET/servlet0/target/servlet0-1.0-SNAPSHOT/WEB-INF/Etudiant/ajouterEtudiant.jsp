@@ -8,17 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Title</title>
+        <title>Ajout d'un étudiant</title>
     </head>
     <body>
-        <p>
         <form>
-            Nom de l'étudiant : <input type="text">
-            Prénom de l'étudiant : <input type="text">
-            Date de naissance : <input type="date">
-            <input type="hidden" name="action" value="confirmerEtudiant">
-            <input type="submit" name="Valider">
+            <p>Nom de l'étudiant : <input name="nomEtudiant"></p>
+            <p>Prénom de l'étudiant : <input name="prenomEtudiant"></p>
+            <p>Numéro étudiant : <input name="numeroEtudiant"></p>
+            <p>Date de naissance : <input name="jj" size="2">/<input name="mm" size="2"><input name="aaaa" size="4"></p>
+            <p><input type="hidden" name="action" value="confirmerEtudiant"></p>
+            <p><input type="submit" name="Valider"></p>
         </form>
-        </p>
     </body>
 </html>

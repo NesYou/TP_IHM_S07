@@ -48,12 +48,6 @@ public class Annee {
         this.algo.creationGroupes(this.promo,this.tds);
     }
 
-
-
-
-
-
-
     public String getLibelle() {
         return libelle;
     }

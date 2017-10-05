@@ -7,16 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Ajouter un prof</title>
-</head>
-<body>
-    <form>
-        Nom prof : <input type="text">
-        Prénom prof : <input type="text">
-        Date de naissance : <input type="date">
-        <input type="hidden" name="action" value="confirmerProf">
-        <input type="submit" name="Valider">
-    </form>
-</body>
+    <head>
+        <title>Ajout d'un professeur</title>
+    </head>
+    <body>
+        <form>
+            <p>Nom du professeur : <input name="nomProfesseur"></p>
+            <p>Prénom du professeur : <input name="prenomProfesseur"></p>
+            <p>Date de naissance : <input name="jj" size="2">/<input name="mm" size="2">/<input name="aaaa" size="4"></p>
+            <p><input type="hidden" name="action" value="confirmerProf"></p>
+            <p><input type="submit" name="Valider"></p>
+        </form>
+    </body>
 </html>

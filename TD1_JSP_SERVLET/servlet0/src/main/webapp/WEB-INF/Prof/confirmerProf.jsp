@@ -8,14 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Confirmation ajout prof</title>
+        <title>Confirmation création professeur</title>
+        <jsp:useBean id="professeurCree" class="modele.Prof" scope="request"></jsp:useBean>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     </head>
     <body>
-        <p>
-            Prof crée.
-        </p>
-        <p>
-            <a href="/controleur?action=home">Retour</a>
-        </p>
+        <p>Le professeur ${professeurCree.nom}, d'identifiant ${professeurCree.id} né le <fmt:formatDate value="${professeurCree.dateDeNaissance}" pattern="dd/MM/yyyy"></fmt:formatDate> a été créé</p>
+        <p><a href="/controleur?action=home">Retour</a></p>
     </body>
 </html>

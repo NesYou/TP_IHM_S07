@@ -1,13 +1,15 @@
 package controleur;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
+import modele.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
 
 /**
  * Created by Fred on 15/09/2016.
@@ -31,7 +33,7 @@ public class Controleur extends HttpServlet {
     private final static String HOME_JSP="/WEB-INF/accueil.jsp";
 
     private static final String AJOUTER_PROF_JSP = "/WEB-INF/Prof/ajouterProf.jsp";
-    private static final String CONFIRMATION_PROF_JSP = "/WEB-INF/Prof/confirmerProf.jsp";
+    private static final String CONFIRMER_PROF_JSP = "/WEB-INF/Prof/confirmerProf.jsp";
 
     private static final String AJOUTER_ETUDIANT_JSP = "/WEB-INF/Etudiant/ajouterEtudiant.jsp";
     private static final String CONFIRMER_ETUDIANT_JSP = "/WEB-INF/Etudiant/confirmerEtudiant.jsp";
@@ -49,6 +51,13 @@ public class Controleur extends HttpServlet {
 
     private void traitementCommun(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter(ACTION);
+
+        IFonctionnalites maFacade = (IFonctionnalites) this.getServletContext().getAttribute("maFacade");
+        if(maFacade == null) {
+            maFacade = new FonctionnalitesStaticVersion();
+            this.getServletContext().setAttribute("maFacade", maFacade);
+        }
+
         String urlCible = EMPTY_STRING;
 
         //ACCUEIL
@@ -65,7 +74,21 @@ public class Controleur extends HttpServlet {
 
         //CONFIRMATION AJOUT PROF
         if(CONFIRMER_PROF.equals(action)) {
-            urlCible = CONFIRMATION_PROF_JSP;
+            urlCible = CONFIRMER_PROF_JSP;
+
+            String nomProfesseur = request.getParameter("nomProfesseur");
+            String prenomProfesseur = request.getParameter("prenomProfesseur");
+            String jourNaissance = request.getParameter("jj");
+            String moisNaissance = request.getParameter("mm");
+            String anneeNaissance = request.getParameter("aaaa");
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Integer.parseInt(anneeNaissance),Integer.parseInt(moisNaissance),Integer.parseInt(jourNaissance));
+
+            Prof professeurCree = maFacade.ajouterProfesseurBase(nomProfesseur, prenomProfesseur, calendar.getTime());
+
+            request.setAttribute("professeurCree",professeurCree);
+
         } else {
             System.err.println("cle ??????"+action+"???");
         }
@@ -80,6 +103,19 @@ public class Controleur extends HttpServlet {
         //CONFIRMATION AJOUT PROF
         if(CONFIRMER_ETUDIANT.equals(action)) {
             urlCible = CONFIRMER_ETUDIANT_JSP;
+
+            String nom = request.getParameter("nomEtudiant");
+            String prenom = request.getParameter("prenomEtudiant");
+            String numeroEtudiant = request.getParameter("numeroEtudiant");
+            String jourNaissance = request.getParameter("jj");
+            String moisNaissance = request.getParameter("mm");
+            String anneeNaissance = request.getParameter("aaaa");
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Integer.parseInt(anneeNaissance),Integer.parseInt(moisNaissance),Integer.parseInt(jourNaissance));
+            Etudiant etudiantCree = maFacade.ajouterEtudiantBase(Long.parseLong(numeroEtudiant),nom,prenom,calendar.getTime());
+
+            request.setAttribute("etudiantCree",etudiantCree);
         } else {
             System.err.println("cle ??????"+action+"???");
         }
@@ -87,6 +123,8 @@ public class Controleur extends HttpServlet {
         //AJOUTER FILIERE
         if(AJOUTER_FILIERE.equals(action)) {
             urlCible = AJOUTER_FILIERE_JSP;
+            Collection<Prof> lesProfs = maFacade.getProfsBase();
+            request.setAttribute("lesProfs",new ArrayList<>(lesProfs));
         } else {
             System.err.println("cle ??????"+action+"???");
         }
@@ -94,6 +132,12 @@ public class Controleur extends HttpServlet {
         //CONFIRMATION FILIERE
         if(CONFIRMER_FILIERE.equals(action)) {
             urlCible = CONFIRMER_FILIERE_JSP;
+
+            String libelleFiliere = request.getParameter("libelleFiliere");
+            String idResponsable = request.getParameter("idProf");
+            Annee anneeCreee = maFacade.creerFiliere(libelleFiliere, Integer.parseInt(idResponsable));
+            request.setAttribute("anneeCreee",anneeCreee);
+
         } else {
             System.err.println("cle ??????"+action+"???");
         }

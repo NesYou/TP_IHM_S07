@@ -7,13 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-    <p>Filiere créée.</p>
-    <p><a href="/controleur?action=home">Retour</a></p>
-
-</body>
+    <head>
+        <title>Confirmation création filière</title>
+        <jsp:useBean id="anneeCreee" type="modele.Annee" scope="request"/>
+    </head>
+    <body>
+        <p>La filière ${anneeCreee.libelle} a bien été crééé. Responsable : ${anneeCreee.responsable.prenom}.</p>
+        <p><a href="/controleur?action=home">Retour</a></p>
+    </body>
 </html>

@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Title</title>
+        <title>L'université du futur</title>
     </head>
     <body>
+        <h1>L'université du futur</h1>
         <ul>
             <li><a href="/controleur?action=ajouterProf">Créer prof</a></li>
             <li><a href="/controleur?action=ajouterEtudiant">Créer étudiant</a></li>

@@ -7,17 +7,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-<p>
-    Etudiant crée.
-</p>
-<p>
-    <a href="/controleur?action=home">Retour</a>
-</p>
-
-</body>
+    <head>
+        <title>Confirmation création étudiant</title>
+        <!-- Recupere un etudianCree de type Etudiant qui est dans le scope request -->
+        <jsp:useBean id="etudiantCree" class="modele.Etudiant" scope="request"></jsp:useBean>
+    </head>
+    <body>
+        <p>Etudiant ${etudiantCree.numeroEtudiant} créé</p>
+        <p><a href="/controleur?action=home">Retour</a></p>
+    </body>
 </html>
