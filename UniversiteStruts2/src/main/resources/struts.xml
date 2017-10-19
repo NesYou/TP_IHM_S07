@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.custom.i18n.resources" value="mesTextes"/>
+
+    <!-- name="/" pour indiquer le package racine -->
+
+    <package name="/" extends="struts-default">
+        <default-action-ref name="index"/>
+        <action name="index">
+            <result>/WEB-INF/index.jsp</result>
+        </action>
+
+        <action name="goToCreationProfesseur">
+            <result>/WEB-INF/professeur/creation/creationProfesseur.jsp</result>
+        </action>
+
+        <action name="goToCreationFiliere" class="action.filiere.GoToCreerFiliere">
+            <result>/WEB-INF/filiere/creationFiliere.jsp</result>
+        </action>
+
+        <action name="creerProfesseur" class="action.professeur.CreerProfesseur">
+            <result>/WEB-INF/professeur/creation/confirmationCreationProfesseur.jsp</result>
+        </action>
+
+        <action name="creerFiliere" class="action.filiere.CreerFiliere">
+            <result>/WEB-INF/filiere/confirmationCreationFiliere.jsp</result>
+        </action>
+
+        <action name="goToGoToModifierProfesseur" class="action.professeur.GoToGoToModifierProfesseur">
+            <result>/WEB-INF/professeur/modification/modifierProfesseur.jsp</result>
+        </action>
+
+        <action name="goTomodifierProfesseur" class="action.professeur.GoToModifierProfesseur">
+            <result>/WEB-INF/professeur/modification/modificationProfesseur.jsp</result>
+        </action>
+
+        <action name="modifierProfesseur" class="action.professeur.ModifierProfesseur">
+            <result>/WEB-INF/professeur/modification/confirmationModificationProfesseur.jsp</result>
+        </action>
+    </package>
+
+</struts>

@@ -93,4 +93,9 @@ public class FonctionnalitesStaticVersion implements IFonctionnalites {
     public Collection<Prof> getProfsBase() {
         return this.profsUniversite.values();
     }
+
+    @Override
+    public Prof getProfBase(int id) {
+        return this.profsUniversite.get(id);
+    }
 }

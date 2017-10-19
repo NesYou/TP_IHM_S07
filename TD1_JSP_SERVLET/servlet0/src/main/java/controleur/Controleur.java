@@ -26,6 +26,8 @@ public class Controleur extends HttpServlet {
     private final static String CONFIRMER_PROF = "confirmerProf";
     private final static String CONFIRMER_ETUDIANT = "confirmerEtudiant";
     private final static String CONFIRMER_FILIERE = "confirmerFiliere";
+    //MODIFICATIONS
+    public static final String MODIFIER_PROF = "modifierProf";
 
     private static final String ACTION = "action";
     private static final String EMPTY_STRING = "";
@@ -40,9 +42,10 @@ public class Controleur extends HttpServlet {
 
     private static final String AJOUTER_FILIERE_JSP = "/WEB-INF/Filiere/ajouterFiliere.jsp";
     private static final String CONFIRMER_FILIERE_JSP = "/WEB-INF/Filiere/confirmerFiliere.jsp";
+    public static final String MODIFIER_PROF_JSP = "/WEB-INF/Prof/modifierProf.jsp";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        this.traitementCommun(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -138,6 +141,15 @@ public class Controleur extends HttpServlet {
             Annee anneeCreee = maFacade.creerFiliere(libelleFiliere, Integer.parseInt(idResponsable));
             request.setAttribute("anneeCreee",anneeCreee);
 
+        } else {
+            System.err.println("cle ??????"+action+"???");
+        }
+
+        //MODIFIER PROFESSEUR
+        if(MODIFIER_PROF.equals(action)) {
+            urlCible = MODIFIER_PROF_JSP;
+            Collection<Prof> lesProfs = maFacade.getProfsBase();
+            request.setAttribute("lesProfs",new ArrayList<>(lesProfs));
         } else {
             System.err.println("cle ??????"+action+"???");
         }

@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="lesProfs" class="java.util.ArrayList" scope="request"/>
 <html>
     <head>
         <title>Ajout d'une filière</title>
-        <jsp:useBean id="lesProfs" class="java.util.ArrayList" scope="request"></jsp:useBean>
     </head>
     <body>
 

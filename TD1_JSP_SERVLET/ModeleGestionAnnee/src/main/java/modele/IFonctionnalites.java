@@ -91,4 +91,11 @@ public interface IFonctionnalites {
      */
     public Collection<Prof> getProfsBase();
 
+    /**
+     *
+     * @param id
+     * @return le professeur correspondant à l'id en paramètre
+     */
+    public Prof getProfBase(int id);
+
 }

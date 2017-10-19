@@ -144,7 +144,13 @@ public class Plateau implements InterfacePlateau {
 
 
     @Override
+    /**
+     * @param x la ligne de la case
+     * @param y la colonne de la case
+     * @return true si le coup joue termine la partie, false sinon
+     */
     public boolean jouerPartie(int x, int y) {
+
         return false;
     }
 
