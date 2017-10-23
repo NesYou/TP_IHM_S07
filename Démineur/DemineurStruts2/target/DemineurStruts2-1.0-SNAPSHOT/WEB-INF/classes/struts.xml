@@ -14,7 +14,11 @@
             <result>/WEB-INF/index.jsp</result>
         </action>
 
-        <action name="confirmationConnexion" class="Connexion">
+        <action name="deconnexion" class="actions.Deconnexion">
+            <result>/WEB-INF/index.jsp</result>
+        </action>
+
+        <action name="confirmationConnexion" class="actions.Connexion">
             <result name="error">/WEB-INF/index.jsp</result>
             <result name="success">/WEB-INF/plateau.jsp</result>
         </action>

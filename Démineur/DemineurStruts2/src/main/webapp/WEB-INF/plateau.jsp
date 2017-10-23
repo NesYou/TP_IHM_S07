@@ -12,8 +12,7 @@
         <title>Title</title>
     </head>
     <body>
-
-        <s:property value="lePlateau"/>
-        
+        <p><s:property value="lePlateau"/></p>
+        <p><s:a action="deconnexion"><s:text name="plateau.deconnexion"/></s:a></p>
     </body>
 </html>
